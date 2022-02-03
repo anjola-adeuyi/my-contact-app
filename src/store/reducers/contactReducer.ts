@@ -38,3 +38,5 @@ const contactReducer = (state: Store = initialState, action: ActionTypes ) => {
 }
 
 export default contactReducer;
+
+export type RootState = ReturnType<typeof contactReducer>
