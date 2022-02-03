@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { addContact } from '../store/actions/actionCreator';
 import { useNavigate } from 'react-router-dom';
+import { RootState } from '../store/reducers/contactReducer';
 
 const AddContact = () => {
-  const contacts = useSelector( state => state);
+  const contacts = useSelector( (state: RootState ) => state.contacts );
   const dispatch = useDispatch();
 
   const navigate = useNavigate()
@@ -19,15 +20,19 @@ const AddContact = () => {
   const handleSubmit = ( e: React.SyntheticEvent ) => {
     e.preventDefault();
 
-    // const checkEmail = contacts.find( contact => contact.email === email && email );
+    const checkEmail = contacts.find( contact => contact.email === email && email );
+    const checkNumber = contacts.find( contact => contact.number === parseInt(number) && number );
 
     if (!name || !number || !email) {
       return toast.warning("Input field is empty!")
     }
 
-    // if (checkEmail) {
-    //   return toast.error("This email already exists")
-    // }
+    if (checkEmail) {
+      return toast.error("This email already exists")
+    }
+    if (checkNumber) {
+      return toast.error("This number already exists")
+    }
 
     dispatch(addContact(name, parseInt(number), email));
     toast.success("Contact Added");

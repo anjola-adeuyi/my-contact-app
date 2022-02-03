@@ -8,10 +8,10 @@ const Home = () => {
 
   return <div className='container'>
     <div className="row">
-      <div className="col-md-12 my-5 text-right">
+      <div className="col-md-12 my-5 d-flex justify-content-end">
         <Link to="/add" className="btn btn-outline-dark"> Add Contact </Link>
       </div>
-      <div className="col-md-6 mx-auto">
+      <div className="col-md-10 mx-auto">
         <table className='table table-hover'>
           <thead className='text-white bg-dark text-center'>
             <tr>
@@ -30,6 +30,10 @@ const Home = () => {
                   <td>{contact.name}</td>
                   <td>{contact.email}</td>
                   <td>{contact.number}</td>
+                  <td>
+                    <Link to={`/edit/${contact.id}`} className='btn btn-small btn-primary mx-2'>Edit</Link>
+                    <button className='btn btn-small btn-danger my-2'>Delete</button>
+                  </td>
                 </tr>
               ) )
             }

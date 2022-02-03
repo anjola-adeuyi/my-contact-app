@@ -16,11 +16,13 @@ function App() {
     <div className="App">
       <ToastContainer />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/add" element={<AddContact />} />
-        <Route path="/edit/:id" element={<EditContact />} />
-      </Routes>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/add" element={<AddContact />} />
+          <Route path="/edit/:id" element={<EditContact />} />
+        </Routes>
+      </div>
     </div>
   );
 }
